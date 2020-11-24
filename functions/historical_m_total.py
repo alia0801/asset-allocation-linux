@@ -205,6 +205,7 @@ while check != 1000 :
                 unit[c] = money[c] / close_now
             temp = sum(money)
             moneys.append(temp)
+            start_date += relativedelta(months=1)
         #%%
         result = []
         # rewards2 = []
@@ -214,7 +215,6 @@ while check != 1000 :
         #歷史回測圖
         his_fig_rew2=[]
         his_fig_rew = result[:want_m]
-        his_fig_rew2.append('0')
         for i in range(len(his_fig_rew)):
             his_fig_rew2.append(format(his_fig_rew[i] , '0.3f'))
         result0 = ' '.join(his_fig_rew2)
@@ -231,13 +231,13 @@ while check != 1000 :
             reward_arr = result[len(result)-(m-1):]
             ans = result
             # print(ans)
-            final_r = (ans[m-1]-(input_per_month*(m-1)))/(input_per_month*(m-1))
+            final_r = (ans[m-2]-(input_per_month*(m-1)))/(input_per_month*(m-1))
             # print(ans[m-1],input_per_month*m)
             final_r = format(final_r*100 , '0.3f')
             # every_reward[count] = str(final_r)
             # count+=1
             every_reward.append(final_r+'%')
-            final_ans.append(format(ans[m-1] , '0.2f'))
+            final_ans.append(format(ans[m-2] , '0.2f'))
             # final_ans.append(str(round(ans[m-1])))
             final_inmoney.append(str(input_per_month*(m-1)))
             # db.close()
